@@ -20,11 +20,12 @@
 ## Technologies Used
 
 * Java
+* PostgreSQL
 * Spark
 * Velocity
-* Gradle
 * JUnit
 * FluentLenium
+* Gradle
 
 ### Legal
 
