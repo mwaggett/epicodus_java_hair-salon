@@ -47,12 +47,13 @@ public class AppTest extends FluentTest {
 
   // @Test
   // public void newStylistForm_addsStylist() {
-  //   goTo("http://localhost:4567/stylists/new/");
+  //   goTo("http://localhost:4567/");
+  //   click("a", withText("Add a new stylist"));
   //   fill("#newStylist").with("Kris");
-  //   submit("#addStylist");
+  //   submit(".btn");
   //   assertThat(pageSource()).contains("Kris");
   // }
-  // ^This test is producing an error I can't explain.
+  //^This test is producing a StackOverflow error that I can't explain.
 
   @Test
   public void index_navigatesToStylistPage() {
@@ -97,6 +98,74 @@ public class AppTest extends FluentTest {
     goTo(stylistPath);
     assertThat(pageSource()).contains("Betty Jane");
     assertThat(pageSource()).contains("Peggy Sue");
+  }
+
+  @Test
+  public void stylistIdPage_navigatesToEditClientForm() {
+    Stylist stylist = new Stylist("Alexandre");
+    stylist.save();
+    Client client = new Client("Peggy Sue", stylist.getId());
+    client.save();
+    String stylistPath = String.format("http://localhost:4567/stylists/%d", stylist.getId());
+    goTo(stylistPath);
+    click("a", withText("Peggy Sue"));
+    assertThat(pageSource()).contains("Edit Client Name:");
+  }
+
+  // @Test
+  // public void editClientForm_navigatesToSuccessPage_afterEdit() {
+  //   Stylist stylist = new Stylist("Alexandre");
+  //   stylist.save();
+  //   Client client = new Client("Betty Jane", stylist.getId());
+  //   client.save();
+  //   String editClientPath = String.format("http://localhost:4567/stylists/%d/clients/%d/edit", stylist.getId(), client.getId());
+  //   goTo(editClientPath);
+  //   fill("#newName").with("Auntie May");
+  //   submit("#editSubmit");
+  //   assertThat(pageSource()).contains("Your edits have been recorded!");
+  // }
+
+  @Test
+  public void editClientForm_navigatesToSuccessPage_afterDelete() {
+    Stylist stylist = new Stylist("Alexandre");
+    stylist.save();
+    Client client = new Client("Betty Jane", stylist.getId());
+    client.save();
+    String editClientPath = String.format("http://localhost:4567/stylists/%d/clients/%d/edit", stylist.getId(), client.getId());
+    goTo(editClientPath);
+    submit("#deleteSubmit");
+    assertThat(pageSource()).contains("Your edits have been recorded!");
+  }
+
+  @Test
+  public void stylistIdPage_navigatesToEditStylistForm() {
+    Stylist stylist = new Stylist("Alexandre");
+    stylist.save();
+    String stylistPath = String.format("http://localhost:4567/stylists/%d", stylist.getId());
+    goTo(stylistPath);
+    click("a", withText("Edit stylist"));
+    assertThat(pageSource()).contains("Edit Stylist Name:");
+  }
+
+  // @Test
+  // public void editStylistForm_navigatesToSuccessPage_afterEdit() {
+  //   Stylist stylist = new Stylist("Alexandre");
+  //   stylist.save();
+  //   String editStylistPath = String.format("http://localhost:4567/stylists/%d/edit", stylist.getId());
+  //   goTo(editStylistPath);
+  //   fill("#newName").with("Auntie May");
+  //   submit("#editSubmit");
+  //   assertThat(pageSource()).contains("Your edits have been recorded!");
+  // }
+
+  @Test
+  public void editStylistForm_navigatesToSuccessPage_afterDelete() {
+    Stylist stylist = new Stylist("Alexandre");
+    stylist.save();
+    String editStylistPath = String.format("http://localhost:4567/stylists/%d/edit", stylist.getId());
+    goTo(editStylistPath);
+    submit("#deleteSubmit");
+    assertThat(pageSource()).contains("Your edits have been recorded!");
   }
 
   @Test

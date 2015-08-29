@@ -1,0 +1,21 @@
+<h1>Edit Client</a>
+
+<form action='/stylists/$stylist.getId()/clients/$client.getId()/edit/success' method='post'>
+  <div class='form-group'>
+    <label><h4>Edit Client Name:</h4></label>
+    <input type="text" name="newName" id="newName" value="$client.getName()" class="form-control">
+
+    <label for="newStylistId"><h4>Select a Stylist:</h4></label>
+    <select id='newStylistId' name='newStylistId' type='text'>
+      <option value="$stylist.getId()" selected>---</option>
+    #foreach($stylist in $stylists)
+      <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+    </select>
+  </div>
+  <button type="submit" id="editSubmit" class='btn'>Edit</button>
+</form>
+
+<form action='/stylists/$stylist.getId()/clients/$client.getId()/delete/success' method='post'>
+  <button type="submit" id="deleteSubmit" class='btn'>Delete Client</button>
+</form>

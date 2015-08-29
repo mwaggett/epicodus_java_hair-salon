@@ -1,11 +1,14 @@
 <h1>$stylist.getName()'s Clients</h1>
 
+<p>Click a client's name to edit or delete.</p>
 <ul>
 #foreach ($client in $clients)
-  <li>$client.getName()</li>
+  <li><a href="/stylists/$stylist.getId()/clients/$client.getId()/edit">$client.getName()</a></li>
 #end
 </ul>
 
 <a href="/stylists/$stylist.getId()/clients/new">Add a new client</a>
+<br>
+<a href="/stylists/$stylist.getId()/edit">Edit stylist</a>
 <br>
 <a href="/">Back to Stylists</a>

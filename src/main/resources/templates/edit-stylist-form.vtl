@@ -1,0 +1,16 @@
+<h1>Edit Stylist</a>
+
+<form action='/stylists/$stylist.getId()/edit/success' method='post'>
+  <div class='form-group'>
+    <label><h4>Edit Stylist Name:</h4></label>
+    <input type="text" name="newName" id="newName" value="$stylist.getName()" class="form-control">
+  </div>
+  <button type="submit" id="editSubmit" class='btn'>Edit</button>
+</form>
+
+<form action='/stylists/$stylist.getId()/delete/success' method='post'>
+  <h5>WARNING: This will delete all of the stylist's clients.</h5>
+  <h5>If you do not wish to lose these clients, please reassign them to a new
+      stylist before deleting.</h5>
+  <button type="submit" id="deleteSubmit" class='btn'>Delete Stylist</button>
+</form>

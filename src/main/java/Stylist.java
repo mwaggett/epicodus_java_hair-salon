@@ -69,7 +69,7 @@ public class Stylist {
   }
 
   public static List<Stylist> all() {
-    String sql = "SELECT * FROM stylists";
+    String sql = "SELECT * FROM stylists ORDER BY name ASC;";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Stylist.class);
     }
