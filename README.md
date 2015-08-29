@@ -12,6 +12,9 @@ Clicking on a stylist's name takes the user to a list of that stylist's clients.
 Also on this page is a link to add a new client, a link to edit (or delete) the
 current stylist, and links to edit (or delete) a client by clicking on their name.
 
+_Integration tests that involve fill("#id").with("text") are currently failing,
+even though everything seems to be working when the application is run._
+
 ## Setup
 
 * Set up the database in PostgreSQL by running the following commands in your terminal:
