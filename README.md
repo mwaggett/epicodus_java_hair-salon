@@ -1,15 +1,27 @@
-# Application Name
+# Hair Salon
 
-##### _{Brief description of application}, {Date of current version}_
+##### _Java Database Basics Code Review for Epicodus, 28 August 2015_
 
 #### By **Molly Waggett**
 
 ## Description
 
-{This is a detailed description of your application. Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. Do you want other developers to use this code in their apps? Talk about things like that here in simple terms.}
+This app allows a hair salon owner to add stylists and clients to a database.
+The homepage displays a list of stylists along with a link to add new stylists.
+Clicking on a stylist's name takes the user to a list of that stylist's clients.
+Also on this page is a link to add a new client, a link to edit (or delete) the
+current stylist, and links to edit (or delete) a client by clicking on their name.
 
 ## Setup
 
+* Set up the database in PostgreSQL by running the following commands in your terminal:
+  * _psql_
+  * _CREATE DATABASE hair_salon;_
+  * _\c hair_salon;_
+  * _CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);_
+  * _CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);_
+* If you wish to run tests, create a test database:
+  * _CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;_
 * Clone this repository.
 * Using the command line, navigate to the top level of the cloned directory.
 * Make sure you have gradle installed. Then run the following command in your terminal:
