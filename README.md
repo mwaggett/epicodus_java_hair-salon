@@ -18,17 +18,23 @@ even though everything seems to be working when the application is run._
 ## Setup
 
 * Set up the database in PostgreSQL by running the following commands in your terminal:
-  * _psql_
-  * _CREATE DATABASE hair_salon;_
-  * _\c hair_salon;_
-  * _CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);_
-  * _CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);_
+```
+ psql
+ CREATE DATABASE hair_salon;
+ \c hair_salon;
+ CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+ CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);
+```
 * If you wish to run tests, create a test database:
-  * _CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;_
+```
+CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
+```
 * Clone this repository.
 * Using the command line, navigate to the top level of the cloned directory.
 * Make sure you have gradle installed. Then run the following command in your terminal:
-* _gradle run_
+```
+gradle run
+```
 * Go to localhost:4567.
 * Go!
 
